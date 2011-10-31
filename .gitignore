@@ -1,0 +1,6 @@
+.settings/com.springsource.sts.grails.core.prefs
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.wst.common.project.facet.core.xml
+stacktrace.log
+target-eclipse/
+target/

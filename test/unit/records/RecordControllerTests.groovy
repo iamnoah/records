@@ -1,14 +1,16 @@
-package org.mosaicaustin.giving
+package records
 
 
 
 import org.junit.*
+import records.RecordController;
+
 import grails.test.mixin.*
 import javax.servlet.http.HttpServletResponse
 
-@TestFor(AddressController)
-@Mock(Address)
-class AddressControllerTests {
+@TestFor(RecordController)
+@Mock(Record)
+class RecordControllerTests {
 
 
     def populateValidParams(params) {
@@ -19,21 +21,21 @@ class AddressControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/address/list" == response.redirectedUrl
+        assert "/record/list" == response.redirectedUrl
     }
 
     void testList() {
 
         def model = controller.list()
 
-        assert model.addressInstanceList.size() == 0
-        assert model.addressInstanceTotal == 0
+        assert model.recordInstanceList.size() == 0
+        assert model.recordInstanceTotal == 0
     }
 
     void testCreate() {
        def model = controller.create()
 
-       assert model.addressInstance != null
+       assert model.recordInstance != null
     }
 
     void testSave() {
@@ -44,55 +46,55 @@ class AddressControllerTests {
         request.method = 'POST'
         controller.save()
 
-        assert model.addressInstance != null
-        assert view == '/address/create'
+        assert model.recordInstance != null
+        assert view == '/record/create'
 
         response.reset()
 
         populateValidParams(params)
         controller.save()
 
-        assert response.redirectedUrl == '/address/show/1'
+        assert response.redirectedUrl == '/record/show/1'
         assert controller.flash.message != null
-        assert Address.count() == 1
+        assert Record.count() == 1
     }
 
     void testShow() {
         controller.show()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/address/list'
+        assert response.redirectedUrl == '/record/list'
 
 
         populateValidParams(params)
-        def address = new Address(params)
+        def record = new Record(params)
 
-        assert address.save() != null
+        assert record.save() != null
 
-        params.id = address.id
+        params.id = record.id
 
         def model = controller.show()
 
-        assert model.addressInstance == address
+        assert model.recordInstance == record
     }
 
     void testEdit() {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/address/list'
+        assert response.redirectedUrl == '/record/list'
 
 
         populateValidParams(params)
-        def address = new Address(params)
+        def record = new Record(params)
 
-        assert address.save() != null
+        assert record.save() != null
 
-        params.id = address.id
+        params.id = record.id
 
         def model = controller.edit()
 
-        assert model.addressInstance == address
+        assert model.recordInstance == record
     }
 
     void testUpdate() {
@@ -105,45 +107,45 @@ class AddressControllerTests {
         controller.update()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/address/list'
+        assert response.redirectedUrl == '/record/list'
 
         response.reset()
 
 
         populateValidParams(params)
-        def address = new Address(params)
+        def record = new Record(params)
 
-        assert address.save() != null
+        assert record.save() != null
 
         // test invalid parameters in update
-        params.id = address.id
+        params.id = record.id
         //TODO: add invalid values to params object
 
         controller.update()
 
-        assert view == "/address/edit"
-        assert model.addressInstance != null
+        assert view == "/record/edit"
+        assert model.recordInstance != null
 
-        address.clearErrors()
+        record.clearErrors()
 
         populateValidParams(params)
         controller.update()
 
-        assert response.redirectedUrl == "/address/show/$address.id"
+        assert response.redirectedUrl == "/record/show/$record.id"
         assert flash.message != null
 
         //test outdated version number
         response.reset()
-        address.clearErrors()
+        record.clearErrors()
 
         populateValidParams(params)
-        params.id = address.id
+        params.id = record.id
         params.version = -1
         controller.update()
 
-        assert view == "/address/edit"
-        assert model.addressInstance != null
-        assert model.addressInstance.errors.getFieldError('version')
+        assert view == "/record/edit"
+        assert model.recordInstance != null
+        assert model.recordInstance.errors.getFieldError('version')
         assert flash.message != null
     }
 
@@ -155,22 +157,22 @@ class AddressControllerTests {
         request.method = 'POST'
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/address/list'
+        assert response.redirectedUrl == '/record/list'
 
         response.reset()
 
         populateValidParams(params)
-        def address = new Address(params)
+        def record = new Record(params)
 
-        assert address.save() != null
-        assert Address.count() == 1
+        assert record.save() != null
+        assert Record.count() == 1
 
-        params.id = address.id
+        params.id = record.id
 
         controller.delete()
 
-        assert Address.count() == 0
-        assert Address.get(address.id) == null
-        assert response.redirectedUrl == '/address/list'
+        assert Record.count() == 0
+        assert Record.get(record.id) == null
+        assert response.redirectedUrl == '/record/list'
     }
 }

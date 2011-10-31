@@ -1,4 +1,4 @@
-package org.mosaicaustin.giving
+package records
 
 import org.springframework.dao.DataIntegrityViolationException
 

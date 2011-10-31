@@ -1,9 +1,9 @@
-<%@ page import="org.mosaicaustin.giving.Person" %>
+<%@ page import="records.Person" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: personInstance, field: 'name', 'error')} ">
 	<label for="name">
-		<g:message code="person.name.label" default="Name" />
+		<g:message code="person.name.label" default="Name (Last, First)" />
 		
 	</label>
 	<g:textField name="name" value="${personInstance?.name}"/>

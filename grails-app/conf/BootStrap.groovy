@@ -1,4 +1,4 @@
-import org.mosaicaustin.giving.*
+import records.*
 
 class BootStrap {
 

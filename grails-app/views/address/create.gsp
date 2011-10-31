@@ -1,4 +1,4 @@
-<%@ page import="org.mosaicaustin.giving.Address" %>
+<%@ page import="records.Address" %>
 <!doctype html>
 <html>
 	<head>

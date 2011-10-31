@@ -1,4 +1,4 @@
-package org.mosaicaustin.giving
+package records
 
 /**
  * "Amount","Process Date","Settlement Date","Return/Fail Date","Return/Fail Reason",
@@ -13,7 +13,7 @@ class Record {
 	Fund fund
 	
 	String checkNumber
-	
+
 	String ccType
 	
 	Date processDate
@@ -25,8 +25,6 @@ class Record {
 		fund(nullable:false)		
 		ccType(blank:true)
 		person(nullable:false)
-		checkNumber(blank:true,validator: { val, obj ->
-			val || obj?.ccType
-		})
+		checkNumber(blank:true)
     }
 }

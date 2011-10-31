@@ -1,4 +1,4 @@
-<%@ page import="org.mosaicaustin.giving.Address" %>
+<%@ page import="records.Address" %>
 
 
 <div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'person', 'error')} required">
@@ -6,7 +6,7 @@
 		<g:message code="address.person.label" default="Person" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="person" name="person.id" from="${org.mosaicaustin.giving.Person.list()}" optionKey="id" required="" value="${addressInstance?.person?.id}" class="many-to-one"/>
+	<g:select id="person" name="person.id" from="${records.Person.list()}" optionKey="id" required="" value="${addressInstance?.person?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'line1', 'error')} ">

@@ -1,8 +1,10 @@
-package org.mosaicaustin.giving
+package records
 
 
 
 import org.junit.*
+import records.FundController;
+
 import grails.test.mixin.*
 import javax.servlet.http.HttpServletResponse
 

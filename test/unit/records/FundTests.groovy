@@ -1,4 +1,4 @@
-package org.mosaicaustin.giving
+package records
 
 
 
@@ -8,8 +8,8 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainUnitTestMixin} for usage instructions
  */
-@TestFor(Person)
-class PersonTests {
+@TestFor(Fund)
+class FundTests {
 
     void testSomething() {
 

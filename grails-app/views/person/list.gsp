@@ -1,5 +1,5 @@
 
-<%@ page import="org.mosaicaustin.giving.Person" %>
+<%@ page import="records.Person" %>
 <!doctype html>
 <html>
 	<head>

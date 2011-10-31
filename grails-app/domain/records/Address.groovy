@@ -1,4 +1,4 @@
-package org.mosaicaustin.giving
+package records
 
 /**
  * "Address1","Address2","City","State","Zip","Phone","Email",
@@ -20,7 +20,7 @@ class Address {
 	String phone
 	
 	String email
-
+	
 	static belongsTo = Person
 
     static constraints = {

@@ -1,11 +1,11 @@
-<%@ page import="org.mosaicaustin.giving.Record" %>
+<%@ page import="records.Record" %>
 
 <div class="fieldcontain ${hasErrors(bean: recordInstance, field: 'person', 'error')} required">
 	<label for="person">
 		<g:message code="record.person.label" default="Person" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="person" name="person.id" from="${org.mosaicaustin.giving.Person.list()}" optionKey="id" required="" value="${recordInstance?.person?.id}" class="many-to-one"/>
+	<g:select id="person" name="person.id" from="${records.Person.list()}" optionKey="id" required="" value="${recordInstance?.person?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: recordInstance, field: 'amount', 'error')} required">
@@ -21,7 +21,7 @@
 		<g:message code="record.fund.label" default="Fund" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="fund" name="fund.id" from="${org.mosaicaustin.giving.Fund.list()}" optionKey="id" optionValue="${{"$it.vancoId: $it.name"}}" required="" value="${recordInstance?.fund?.id}" class="many-to-one"/>
+	<g:select id="fund" name="fund.id" from="${records.Fund.list()}" optionKey="id" optionValue="${{"$it.vancoId: $it.name"}}" required="" value="${recordInstance?.fund?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: recordInstance, field: 'ccType', 'error')} ">
