@@ -25,7 +25,7 @@ class Address {
 
     static constraints = {
 		line2(blank:true,nullable:true)
-		phone(blank:true)
-		email(email:true,blank:true)
+		phone(blank:true,nullable:true)
+		email(email:true,blank:true,nullable:true)
     }
 }

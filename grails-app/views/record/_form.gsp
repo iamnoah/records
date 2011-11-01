@@ -5,7 +5,7 @@
 		<g:message code="record.person.label" default="Person" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="person" name="person.id" from="${records.Person.list()}" optionKey="id" required="" value="${recordInstance?.person?.id}" class="many-to-one"/>
+	<g:select id="person" name="person.id" optionValue="name" from="${records.Person.list()}" optionKey="id" required="" value="${recordInstance?.person?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: recordInstance, field: 'amount', 'error')} required">

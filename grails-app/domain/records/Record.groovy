@@ -23,8 +23,8 @@ class Record {
     static constraints = {
 		amount(min:0.0G,max:1.0e6G,scale:2)
 		fund(nullable:false)		
-		ccType(blank:true)
+		ccType(blank:true,nullable:true)
 		person(nullable:false)
-		checkNumber(blank:true)
+		checkNumber(blank:true,nullable:true)
     }
 }

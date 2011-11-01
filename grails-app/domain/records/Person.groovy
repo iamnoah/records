@@ -28,10 +28,10 @@ class Person {
 	static hasMany = [addresses:Address,records:Record]
 
     static constraints = {
-		vancoId(blank:true,display:false,unique:true)
-		notes(blank:true,widget:'textArea')
+		vancoId(blank:true,nullable:true,display:false,unique:true)
+		notes(blank:true,nullable:true,widget:'textArea')
 		name(validator: {
-			it.indexOf(', ') > 0 ? false : 'Enter Last Name, First Name'
+			it.indexOf(', ') > 0 ? true : 'Enter Last Name, First Name'
 		})
     }
 }

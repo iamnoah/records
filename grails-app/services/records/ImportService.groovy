@@ -13,6 +13,9 @@ class ImportService {
 		}
 		def people = [], peopleById = [:], records = []
 		
+		if(!mapping['Member ID']) {
+			return new ImportResult(errors:['File is invalid.'])
+		}
 		String[] line
 		while((line = next(lines))) {
 			def vancoId = line[mapping['Member ID']]
@@ -49,15 +52,18 @@ class ImportService {
 			}
 			
 			// check for a matching record
-			def record = Record.findOrCreateWhere(
+			def data = [
 				amount: line[mapping['Amount']] as BigDecimal,
-				processDate: Date.parse('yyyy-mm-dd',line[mapping['Process Date']]),
+				processDate: Date.parse('yyyy-MM-dd',line[mapping['Process Date']]),
 				person: person,
 				ccType: line[mapping['CCType']],
 				fund: fund,
-			)
+			]
+			def record = person.id ? Record.findOrCreateWhere(data) : 
+				new Record(data)
 			
 			if(!record.id) {
+				person.addToRecords(record)
 				records << record
 			}
 		}

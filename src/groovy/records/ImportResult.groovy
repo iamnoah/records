@@ -2,6 +2,8 @@ package records
 
 class ImportResult {
 
+	List<String> errors = []
+	
 	/**
 	 * New records.
 	 */
@@ -13,8 +15,10 @@ class ImportResult {
 	List<Person> people = []
 	
 	void saveAll() {
-		people*.save()
-		records*.save()
+		people*.save(flush:true)
+		records.findAll {
+			it.person.id
+		}*.save(flush:true)
 	}
 	
 }

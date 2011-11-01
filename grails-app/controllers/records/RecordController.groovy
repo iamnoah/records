@@ -11,8 +11,17 @@ class RecordController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [recordInstanceList: Record.list(params), recordInstanceTotal: Record.count()]
+		if(params.ids) {
+			def ids = params.list('ids'), i = 0
+			
+			[recordInstanceList: ids.collect { Record.read(it) }, 
+				recordInstanceTotal: ids.size()]
+		} else {
+			params.sort = params.sort ?: 'processDate'
+			params.order = params.order ?: 'desc'
+			params.max = Math.min(params.max ? params.int('max') : 10, 100)
+			[recordInstanceList: Record.list(params), recordInstanceTotal: Record.count()]
+		}
     }
 
     def create() {

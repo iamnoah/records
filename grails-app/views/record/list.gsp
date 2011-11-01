@@ -42,17 +42,17 @@
 				<g:each in="${recordInstanceList}" status="i" var="recordInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${recordInstance.id}">${fieldValue(bean: recordInstance, field: "amount")}</g:link></td>
+						<td><g:link action="show" id="${recordInstance.id}"><g:formatNumber number="${recordInstance?.amount}" type="currency" currencyCode="USD" /></g:link></td>
 					
-						<td>${fieldValue(bean: recordInstance, field: "fund")}</td>
+						<td>${recordInstance?.fund?.name}</td>
 					
 						<td>${fieldValue(bean: recordInstance, field: "ccType")}</td>
 					
-						<td>${fieldValue(bean: recordInstance, field: "person")}</td>
+						<td>${recordInstance?.person?.name}</td>
 					
 						<td>${fieldValue(bean: recordInstance, field: "checkNumber")}</td>
 					
-						<td><g:formatDate date="${recordInstance.processDate}" /></td>
+						<td><g:formatDate date="${recordInstance.processDate}"  format="MMMM dd yyyy"/></td>
 					
 					</tr>
 				</g:each>
