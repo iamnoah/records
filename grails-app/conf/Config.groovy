@@ -9,6 +9,20 @@
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
+grails.config.locations = []
+// grails.config.locations = [ "classpath:${appName}-config.properties",
+//                             "classpath:${appName}-config.groovy",
+//                             "file:${userHome}/.grails/${appName}-config.properties",
+//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+
+if(System.properties["${appName}.config.location"]) {
+	grails.config.locations << "file:" + System.properties["${appName}.config.location"]
+} else if(Metadata.getCurrent().isWarDeployed()) {
+	def warName = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace(getClass().simpleName+".class","")).parentFile.parentFile.name
+	grails.config.locations << "file:/home/noah/records-config-${warName}.groovy"
+	grails.config.locations << "file:/etc/tomcat6/connect/records-config-${warName}.groovy"
+}
+println "Config Locations = "+grails.config.locations
 
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
