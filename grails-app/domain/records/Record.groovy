@@ -16,7 +16,17 @@ class Record {
 
 	String ccType
 	
+	Integer month
+	
+	Integer year
+	
 	Date processDate
+	
+	void setProcessDate(Date date) {
+		this.@processDate = date
+		month = date.month
+		year = date.year
+	}
 	
 	static belongsTo = Person
 
@@ -27,4 +37,8 @@ class Record {
 		person(nullable:false)
 		checkNumber(blank:true,nullable:true)
     }
+
+	String toString() {
+		"$amount > $fund on $processDate"
+	}
 }

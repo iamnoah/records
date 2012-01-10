@@ -9,7 +9,13 @@ class ImportController {
 	}
 	
 	def uploadVanco() {
-		ImportResult result = request.getFile('data').inputStream.withReader {
+		def data = params.dataString
+		if(data) {
+			data = new StringReader(data)
+		} else {
+			data = request.getFile('data').inputStream
+		}
+		ImportResult result = data.withReader {
 			importService.importVanco it
 		}
 		if(result.errors) {

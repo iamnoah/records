@@ -14,4 +14,8 @@ class Fund {
 	static constraints = {
 		vancoId(blank:true,display:false,unique:true)
 	}
+	
+	String toString() {
+		"$vancoId - $name"
+	}
 }

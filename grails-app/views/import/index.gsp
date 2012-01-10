@@ -20,5 +20,13 @@
 	        <input type="file" name="data" accept="text/csv" />
 	        <input type="submit" />
 	    </g:uploadForm>
+	    
+	    <g:form action="uploadVanco" method="post">
+	    	<label>
+	    		<span>or Paste it here:</span>
+		        <textarea name="dataString"></textarea>
+	    	</label>
+	        <input type="submit" />
+	    </g:form>
 	</body>
 </html>

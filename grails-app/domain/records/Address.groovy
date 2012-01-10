@@ -28,4 +28,17 @@ class Address {
 		phone(blank:true,nullable:true)
 		email(email:true,blank:true,nullable:true)
     }
+
+	String toString() {
+		def lines = line1 + '\n'
+		if(line2) lines += line2
+		
+		"""\
+$lines
+$city, $state  $zip
+
+$phone
+$email
+"""
+	}
 }

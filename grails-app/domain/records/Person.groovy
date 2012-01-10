@@ -34,4 +34,6 @@ class Person {
 			it.indexOf(', ') > 0 ? true : 'Enter Last Name, First Name'
 		})
     }
+	
+	String toString() { name }
 }
