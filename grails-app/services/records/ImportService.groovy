@@ -27,6 +27,10 @@ class ImportService {
 			}
 			peopleById[vancoId] = person
 			
+			if(vancoId.toInteger() < 0) {
+				person.vancoId = null
+			}
+			
 			// try to find a matching address, else create it
 			def addrData = [
 				line1: line[mapping['Address1']],

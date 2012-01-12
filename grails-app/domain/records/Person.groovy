@@ -4,6 +4,7 @@ package records
  * "Member ID","Member Name"
  */
 class Person {
+	static searchable = [only:['vancoId','name','addresses','notes']]
 
 	String vancoId
 	

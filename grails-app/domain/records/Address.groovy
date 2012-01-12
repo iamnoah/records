@@ -29,14 +29,17 @@ class Address {
 		email(email:true,blank:true,nullable:true)
     }
 
-	String toString() {
-		def lines = line1 + '\n'
-		if(line2) lines += line2
+	String toAddressString() {
+		def lines = line1
+		if(line2) lines += '\n' + line2
 		
-		"""\
-$lines
-$city, $state  $zip
-
+"""$lines
+$city, $state  $zip"""
+	}
+	
+	String toString() {
+"""\
+${toAddressString()}
 $phone
 $email
 """

@@ -1,0 +1,16 @@
+.statement {
+	page-break-after: always;
+	padding: 6em 10% 0;
+}
+
+body {
+	font-size: 12px;
+}
+
+h1 {
+	font-size: 16px;
+}
+
+.records {
+	margin: 1em 5em;	
+}

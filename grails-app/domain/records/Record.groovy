@@ -5,6 +5,7 @@ package records
  * "ACH/CC","Payment Type","CCType","Discount Amount","Transaction Fee","Deposit Date"
  */
 class Record {
+	static searchable = [only:['amount','fund','processDate','ccType','checkNumber']]
 	
 	Person person
 
@@ -39,6 +40,6 @@ class Record {
     }
 
 	String toString() {
-		"$amount > $fund on $processDate"
+		"$amount to $fund on $processDate"
 	}
 }
