@@ -61,7 +61,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${personInstance?.records}">
+				<g:if test="${personInstance?.records}">				
 				<li class="fieldcontain">
 					<span id="records-label" class="property-label"><g:message code="person.records.label" default="Records" /></span>
 					
@@ -73,6 +73,16 @@
 				</g:if>
 			
 			</ol>
+			<g:form action="moveRecords" method="post">
+				
+					<input type="hidden" name="from" value="${personInstance.id}">
+					<label>
+						Move records to:
+						<g:select name="to" optionValue="name" from="${records.Person.list()}" optionKey="id" required="" class="many-to-one" value="${personInstance.id}"/>
+					</label>
+					<input type="submit" value="move">
+			</g:form>
+						
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${personInstance?.id}" />

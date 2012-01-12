@@ -107,7 +107,7 @@ log4j = {
 
     warn   'org.mortbay.log'
 
-	debug 'org.hibernate.SQL'
-	trace 'org.hibernate.type'
+	// debug 'org.hibernate.SQL'
+	// trace 'org.hibernate.type'
 }
 

@@ -4,7 +4,9 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PersonController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST", moveRecords: "POST"]
+
+	RecordService recordService
 
     def index() {
         redirect(action: "list", params: params)
@@ -81,6 +83,22 @@ class PersonController {
 		flash.message = message(code: 'default.updated.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])
         redirect(action: "show", id: personInstance.id)
     }
+
+	def moveRecords() {
+        def from = Person.get(params.from),
+			to = Person.get(params.to)
+        if (!from || !to) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), params.from])
+            redirect(action: "list")
+            return
+        }
+		
+		println "moving records from ${from} to $to"
+		
+		recordService.move(from,to)
+		flash.message = 'Records moved'
+		redirect(action: "show", id: to.id)
+	}
 
     def delete() {
         def personInstance = Person.get(params.id)
