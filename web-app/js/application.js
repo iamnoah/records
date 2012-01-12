@@ -6,4 +6,6 @@ if (typeof jQuery !== 'undefined') {
 			$(this).fadeOut();
 		});
 	})(jQuery);
+	
+	$('select.many-to-one').grailsAutocomplete();
 }

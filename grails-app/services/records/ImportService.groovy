@@ -51,6 +51,10 @@ class ImportService {
 				fund.save()
 			}
 			
+			if(!line[mapping['Amount']].isNumber()) {
+				throw new Exception('Invalid amount for '+line.join(','))
+			}
+			
 			// check for a matching record
 			def data = [
 				amount: line[mapping['Amount']] as BigDecimal,
