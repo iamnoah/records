@@ -27,7 +27,7 @@
 	</dl>
 
 	<table class="records">
-		<g:set var="records" value="${Record.findAllByYearAndPerson(2011-1900,person)}" />
+		<g:set var="records" value="${Record.findAllByYearAndPerson(2011-1900,person).sort{ it.processDate }}" />
 		<thead>
 			<tr>
 				<th class="date">Date
@@ -52,5 +52,10 @@
 	
 </div>
 		</g:each>
+<!--
+<pre><g:each in="${people}" var="person">"${person.firstName} ${person.lastName}
+${person.addresses.find().toAddressString()}",
+</g:each></pre>
+-->		
 	</body>
 </html>

@@ -73,6 +73,13 @@
 				</g:if>
 			
 			</ol>
+			
+			<g:form controller="report" method="get">
+				<input type="hidden" name="people" value="${personInstance.id}">
+				Year: <input type="text" name="year" value="2011">
+				<input type="submit" value="Report">
+			</g:form>
+			
 			<g:form action="moveRecords" method="post">
 				
 					<input type="hidden" name="from" value="${personInstance.id}">
