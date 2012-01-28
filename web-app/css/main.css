@@ -219,6 +219,7 @@ fieldset,
 	margin-top: 1em;
 }
 
+
 .fieldcontain label,
 .fieldcontain .property-label {
 	color: #666666;
@@ -230,6 +231,7 @@ fieldset,
 	float: left;
 }
 
+.fieldcontain form,
 .fieldcontain .property-value {
 	display: block;
 	margin-left: 27%;

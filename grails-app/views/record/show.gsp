@@ -22,61 +22,61 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list record">
-			
+
 				<g:if test="${recordInstance?.amount}">
 				<li class="fieldcontain">
 					<span id="amount-label" class="property-label"><g:message code="record.amount.label" default="Amount" /></span>
-					
+
 						<span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${recordInstance}" field="amount"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${recordInstance?.fund}">
 				<li class="fieldcontain">
 					<span id="fund-label" class="property-label"><g:message code="record.fund.label" default="Fund" /></span>
-					
+
 						<span class="property-value" aria-labelledby="fund-label"><g:link controller="fund" action="show" id="${recordInstance?.fund?.id}">${recordInstance?.fund?.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${recordInstance?.ccType}">
 				<li class="fieldcontain">
 					<span id="ccType-label" class="property-label"><g:message code="record.ccType.label" default="Cc Type" /></span>
-					
+
 						<span class="property-value" aria-labelledby="ccType-label"><g:fieldValue bean="${recordInstance}" field="ccType"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${recordInstance?.person}">
 				<li class="fieldcontain">
 					<span id="person-label" class="property-label"><g:message code="record.person.label" default="Person" /></span>
-					
+
 						<span class="property-value" aria-labelledby="person-label"><g:link controller="person" action="show" id="${recordInstance?.person?.id}">${recordInstance?.person?.encodeAsHTML()}</g:link></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${recordInstance?.checkNumber}">
 				<li class="fieldcontain">
 					<span id="checkNumber-label" class="property-label"><g:message code="record.checkNumber.label" default="Check Number" /></span>
-					
+
 						<span class="property-value" aria-labelledby="checkNumber-label"><g:fieldValue bean="${recordInstance}" field="checkNumber"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${recordInstance?.processDate}">
 				<li class="fieldcontain">
 					<span id="processDate-label" class="property-label"><g:message code="record.processDate.label" default="Process Date" /></span>
-					
+
 						<span class="property-value" aria-labelledby="processDate-label"><g:formatDate date="${recordInstance?.processDate}" /></span>
-					
+
 				</li>
 				</g:if>
-			
+
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

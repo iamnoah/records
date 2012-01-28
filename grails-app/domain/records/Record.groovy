@@ -20,13 +20,18 @@ class Record {
 	Integer month
 	
 	Integer year
+
+	Integer day
 	
 	Date processDate
 	
 	void setProcessDate(Date date) {
 		this.@processDate = date
-		month = date.month
-		year = date.year
+		date?.toCalendar()?.with {
+			month = get(MONTH)
+			year = get(YEAR)
+			day = get(DATE)
+		}
 	}
 	
 	static belongsTo = Person
