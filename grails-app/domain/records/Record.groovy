@@ -45,6 +45,6 @@ class Record {
     }
 
 	String toString() {
-		"$amount to $fund on $processDate"
+		"$amount to ${fund ?: 'General'} on $year-$month-$day"
 	}
 }

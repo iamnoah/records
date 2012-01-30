@@ -5,6 +5,8 @@ package records
  */
 class Pledge {
 
+	static searchable = [only:['amount','fund','person']]
+
 	Person person
 
 	Fund fund

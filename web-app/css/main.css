@@ -43,8 +43,17 @@ body {
 	        box-shadow: 0 0 0.3em #255b17;
 }
 
-#grailsLogo {
-	background-color: #abbf78;
+.header {
+	background-color: #abbf78;	
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+   font-size: 2em;
+   padding: 0.1em;
+}
+
+.header h1 {
+	color: #000;
+	text-transform: lowercase;
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
