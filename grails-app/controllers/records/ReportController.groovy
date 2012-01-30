@@ -3,19 +3,17 @@ package records
 class ReportController {
 
     def index() {
-		def year = params.year?.toLong() ?: 2011
-		
+		def year = params.year?.toInteger() ?: 2011
+
 		if(params.people) {
-			return [people: Person.executeQuery('select distinct p from Person p inner join p.records as r where r.processDate >= :start and r.processDate < :end and p.id in (:ids)',[
-				start: new Date("$year/01/01"),
-				end: new Date("${year+1}/01/01"),
+			return [people: Person.executeQuery('select distinct p from Person p inner join p.records as r where r.year = :year and p.id in (:ids)',[
+				year: year,
 				ids: params.list('people')*.toLong()
-			])]
+			]),year: year]
 		}
-	
-		[people: Person.executeQuery('select distinct p from Person p inner join p.records as r where r.processDate >= :start and r.processDate < :end',[
-			start: new Date("$year/01/01"),
-			end: new Date("${year+1}/01/01")
-		])]
+
+		[people: Person.executeQuery('select distinct p from Person p inner join p.records as r where r.year = :year',[
+			year: year
+		]),year: year]
 	}
 }

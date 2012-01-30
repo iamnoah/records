@@ -31,7 +31,8 @@ class Person {
 		Record.createCriteria().call {
 			eq('person',this)
 			eq('year',year as int)
-			order('month','day')
+			order('month')
+			order('day')
 		}
 	}
 

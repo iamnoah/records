@@ -81,6 +81,8 @@
 						</label>
 						<input type="submit" value="Change"/>
 					</g:form>
+
+					<g:link controller="record" action="create" params="${['person.id':personInstance.id]}">New Record</g:link>
 				</li>
 				</g:if>
 

@@ -23,7 +23,7 @@ if(System.properties["${appName}.config.location"]) {
 } else if(Metadata.getCurrent().isWarDeployed()) {
 	def warName = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().replace(getClass().simpleName+".class","")).parentFile.parentFile.name
 	grails.config.locations << "file:/home/noah/records-config-${warName}.groovy"
-	grails.config.locations << "file:/etc/tomcat6/connect/records-config-${warName}.groovy"
+	grails.config.locations << "file:/etc/tomcat6/records/records-config-${warName}.groovy"
 }
 println "Config Locations = "+grails.config.locations
 

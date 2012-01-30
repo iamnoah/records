@@ -18,8 +18,8 @@
 	<h1>CONTRIBUTION STATEMENT</h1>
 
 	<dl>
-		<dt>REPORTING PERIOD: 
-		<dd>January 1, 2011 – December 31, 2011
+		<dt>REPORTING PERIOD:
+		<dd>January 1, ${year} – December 31, ${year}
 		<dt>NAME:
 		<dd>${person.firstName} ${person.lastName}
 		<dt>ADDRESS:
@@ -27,7 +27,7 @@
 	</dl>
 
 	<table class="records">
-		<g:set var="records" value="${Record.findAllByYearAndPerson(2011-1900,person).sort{ it.processDate }}" />
+		<g:set var="records" value="${person.getRecordsForYear(year)}" />
 		<thead>
 			<tr>
 				<th class="date">Date
@@ -48,14 +48,14 @@
 
 	<p>Thank you for your continued support of the ministries of Mosaic.  In compliance with IRS Code Section 170(f)(8), this statement serves as verification that goods or services, if any, provided by Mosaic in return for your contribution consisted entirely of intangible religious benefits.  Therefore, these contributions are fully deductible for tax purposes.</p>
 
-	<p>This statement reflects your total financial contribution to the work and ministries of Mosaic during 2011.  Should there be questions or comments in regard to the information shown on this statement, please contact Noah Sloan at 512.524.9814.</p>
-	
+	<p>This statement reflects your total financial contribution to the work and ministries of Mosaic during 2011.  Should there be questions or comments in regard to the information shown on this statement, please email treasurer@mosaicaustin.org or call (512) 814-5619.</p>
+
 </div>
 		</g:each>
 <!--
 <pre><g:each in="${people}" var="person">"${person.firstName} ${person.lastName}
 ${person.addresses.find().toAddressString()}",
 </g:each></pre>
--->		
+-->
 	</body>
 </html>
