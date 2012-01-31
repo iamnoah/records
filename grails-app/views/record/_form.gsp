@@ -45,6 +45,9 @@
 		<g:message code="record.processDate.label" default="Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="processDate" precision="day"  value="${recordInstance?.processDate}"  />
+	<span class="datePicker">
+		<input class="dateEntry" value="${recordInstance?.processDate?.format('MM/dd/YYYY')}"  />
+		<g:datePicker class="picker" name="processDate" precision="day"  value="${recordInstance?.processDate}"  />
+	</span>
 </div>
 
