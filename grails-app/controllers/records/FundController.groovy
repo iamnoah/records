@@ -31,14 +31,20 @@ class FundController {
     }
 
     def show() {
-        def fundInstance = Fund.get(params.id)
-        if (!fundInstance) {
+        def fund = Fund.get(params.id)
+        if (!fund) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'fund.label', default: 'Fund'), params.id])
             redirect(action: "list")
             return
         }
 
-        [fundInstance: fundInstance]
+        [
+            fundInstance: fund,
+            pledges: fund.getPledgesForYear(params.pledgeYear ?: null),
+            records: params.recordsMonth ?
+                fund.getRecordsForMonth(params.int('recordsMonth') - 1,params.recordsYear ?: null) :
+                fund.getRecordsForYear(params.recordsYear ?: null),
+        ]
     }
 
     def edit() {

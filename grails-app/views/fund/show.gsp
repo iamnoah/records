@@ -44,10 +44,13 @@
 				<li class="fieldcontain">
 					<span id="records-label" class="property-label"><g:message code="fund.records.label" default="Records" /></span>
 
-					<g:set var="records" value="${params.recordsMonth ? fundInstance.getRecordsForMonth(params.int('recordsMonth') - 1,params.recordsYear) : fundInstance.getRecordsForYear(params.recordsYear)}" />
+					<g:set var="records" value="${records}" />
 					<g:each in="${records}" var="r">
 						<span class="property-value" aria-labelledby="records-label"><g:link controller="record" action="show" id="${r.id}"><g:formatDate format="yyyy-MM-dd" date="${r.processDate}"/> - $${r?.amount.toString().padLeft(7,'_')} from ${r.person.name}</g:link></span>
 					</g:each>
+
+					<span class="property-label">Total</span>
+					<span class="property-value">${records*.amount.sum()}</span>
 
 					<g:form method="get" action="show" id="${fundInstance.id}">
 						<label>
@@ -65,9 +68,12 @@
 				<li class="fieldcontain">
 					<span id="pledges-label" class="property-label">Pledges</span>
 
-					<g:each in="${fundInstance.getPledgesForYear(params.pledgeYear)}" var="p">
+					<g:each in="${pledges}" var="p">
 						<span class="property-value" aria-labelledby="pledges-label"><g:link controller="pledge" action="show" id="${p.id}">${p?.amount} from ${p?.person?.name}</g:link></span>
 					</g:each>
+
+					<span class="property-label">Total</span>
+					<span class="property-value">${pledges*.amount.sum()}</span>
 
 					<g:form method="get" action="show" id="${fundInstance.id}">
 						<label>
