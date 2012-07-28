@@ -6,13 +6,13 @@ class ImportService {
 
     ImportResult importVanco(Reader text) {
 		def lines = new CSVReader(text)
-		
+
 		int i = 0;
 		def mapping = [:] + next(lines)?.collectEntries { name ->
 			[name,i++]
 		}
 		def people = [], peopleById = [:], records = []
-		
+
 		if(!mapping['Member ID']) {
 			return new ImportResult(errors:['File is invalid.'])
 		}
@@ -26,11 +26,11 @@ class ImportService {
 				people << person
 			}
 			peopleById[vancoId] = person
-			
+
 			if(vancoId.toInteger() < 0) {
 				person.vancoId = null
 			}
-			
+
 			// try to find a matching address, else create it
 			def addrData = [
 				line1: line[mapping['Address1']],
@@ -47,18 +47,18 @@ class ImportService {
 			if(!address) {
 				person.addToAddresses(new Address(addrData))
 			}
-			
+
 			// determine the Fund
 			def fund = Fund.findOrCreateByVancoId(line[mapping['Fund ID']])
 			if(!fund.name) {
 				fund.name = line[mapping['Fund Name']]
 				fund.save()
 			}
-			
+
 			if(!line[mapping['Amount']].isNumber()) {
 				throw new Exception('Invalid amount for '+line.join(','))
 			}
-			
+
 			// check for a matching record
 			def data = [
 				amount: line[mapping['Amount']] as BigDecimal,
@@ -67,22 +67,22 @@ class ImportService {
 				ccType: line[mapping['CCType']],
 				fund: fund,
 			]
-			def record = person.id ? Record.findOrCreateWhere(data) : 
+			def record = person.id ? Record.findOrCreateWhere(data) :
 				new Record(data)
-			
+
 			if(!record.id) {
 				person.addToRecords(record)
 				records << record
 			}
 		}
-		
+
 		[people:people,records:records] as ImportResult
     }
-	
+
 	// returns the next truthy line
 	private next(lines) {
 		def line = lines.readNext()
-		line  == null ? null : 
+		line  == null ? null :
 			(line?.findAll()?.size() ? line : next(lines))
 	}
 }
