@@ -46,7 +46,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="datePicker">
-		<input class="dateEntry" value="${recordInstance?.processDate?.format('MM/dd/YYYY')}"  />
+		<input class="dateEntry" value="${recordInstance?.processDate?.format('MM/dd/yyyy')}"  />
 		<g:datePicker class="picker" name="processDate" precision="day"  value="${recordInstance?.processDate}"  />
 	</span>
 </div>
