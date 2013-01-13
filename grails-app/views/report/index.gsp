@@ -23,7 +23,7 @@
 		<dt>NAME:
 		<dd>${person.firstName} ${person.lastName}
 		<dt>ADDRESS:
-		<dd><address><g:each in="${person.addresses.find().toAddressString().split('\n')}">${it}<br/></g:each></address>
+		<dd><address><g:each in="${person.addresses.find()?.toAddressString()?.split('\n')}">${it}<br/></g:each></address>
 	</dl>
 
 	<table class="records">

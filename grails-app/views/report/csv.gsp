@@ -1,0 +1,3 @@
+"First Name","Last Name","Address","Date","Amount","Fund"
+<g:each in="${people}" var="person"><g:set var="records" value="${person.getRecordsForYear(year)}" /><g:each in="${records}" var="record">"${person.firstName}","${person.lastName}","<g:each in="${person.addresses.find()?.toAddressString()?.split('\n')}">${it} </g:each>","${record.processDate.format('MM/dd/yyyy')}","${record.amount}","${record.fund.name}"
+</g:each></g:each>

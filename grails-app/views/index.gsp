@@ -108,6 +108,7 @@
 					<li><g:link controller="fund">Funds</g:link>
 					<li><g:link controller="pledge">Pledges</g:link>
 					<li><g:link controller="report">Last Year's Giving Report</g:link>
+					<li><g:link controller="report" action="csv">Export Last Year's Data</g:link>
 				</ul>
 				<!--
 				<h2>Available Controllers:</h2>
